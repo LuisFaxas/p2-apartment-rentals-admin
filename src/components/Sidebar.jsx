@@ -1,11 +1,19 @@
+// src/components/Sidebar.jsx
+import { Link } from 'react-router-dom';
 
-
-const Sidebar = () => {
+function Sidebar() {
   return (
     <div className="sidebar">
-      {/* Sidebar content goes here */}
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+      </ul>
     </div>
   );
-};
+}
 
 export default Sidebar;
