@@ -1,5 +1,11 @@
+// src/components/Navbar.jsx
+
 function Navbar() {
-  return <h1>Hello World</h1>;
+  return (
+    <nav>
+      {/* Your navbar content */}
+    </nav>
+  );
 }
 
 export default Navbar;
