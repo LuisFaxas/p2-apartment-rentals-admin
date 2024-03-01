@@ -1,5 +1,5 @@
 // src/App.jsx
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import HomePage from './pages/HomePage';
@@ -7,14 +7,13 @@ import ItemDetailsPage from './pages/ItemDetailsPage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Footer from './components/Footer'; 
-import './App.css'; // Import the CSS file
-import { useEffect, useState } from 'react';
+import './App.css'; 
 
 
 
 function App() {
   return (
-    <Router>
+    <div className='App'>
       <Navbar />
       <Sidebar />
       <div className="main-content"> 
@@ -26,7 +25,9 @@ function App() {
       </Routes>
       </div>
       <Footer />
-    </Router>
+
+    </div>
+
   );
 }
 

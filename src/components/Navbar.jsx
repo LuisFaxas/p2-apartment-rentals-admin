@@ -3,10 +3,10 @@ import logo from '../../Resources/Logo1.jpg'
 
 function Navbar() {
   return (
-    <nav className='navbar'>
+    <div className='navbar1'>
       <img className='logo' src={logo} alt="App logo" />
       <h1 className='title'>Apartments</h1> 
-    </nav>
+    </div>
   );
 }
 
