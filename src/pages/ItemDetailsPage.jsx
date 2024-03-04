@@ -1,13 +1,33 @@
 import listings from "../data/data.json";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import UpdateForm from '../components/UpdateAptForm';
+import { Button } from 'react-bootstrap';
 
-function ItemDetailsPage() {
+function ItemDetailsPage({ data }) {
   const { id } = useParams();
-  const item = listings.results.find((item) => item.id === id);
+  const [item, setItem] = useState(data.find((item) => item.id == id));
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleUpdate = (updatedItem) => {
+    // Find the index of the item in the listings.results array
+    const index = data.results.findIndex((item) => item.id === id);
+
+    // Replace the item in the listings.results array with the updated item
+    data.results[index] = updatedItem;
+
+    // Update the state with the updated item
+    setItem(updatedItem);
+
+    handleClose();
+  };
 
   return (
     <div>
-      <h2>{item.name.toUpperCase()}</h2>
+      <h2><strong>{item.name.toUpperCase()}</strong></h2>
       <img src={item.picture_url.url} alt="Item" />
       <div className="item-basic-info">
         <p className="item-location">
@@ -16,13 +36,13 @@ function ItemDetailsPage() {
         <p className="item-rooms">
           {item.bedrooms} Rooms, {item.bathrooms} Baths, {item.beds} Beds
         </p>
-        <p>${item.price} per night</p>
+        <p className="item-price"><span>${item.price} per night</span></p>
       </div>
 
       <hr />
       <div className="item-midsection">
         <div className="item-description">
-          <p>About this place: </p>
+          <p><strong>About this place: </strong></p>
           <p>{item.description}</p>
         </div>
 
@@ -31,19 +51,25 @@ function ItemDetailsPage() {
           <ul className="list-group list-group-flush">
             <li className="list-group-item">Host since {item.host_since}</li>
             <li className="list-group-item">
-              Cancellation Policy: {item.cancellation_policy.toUpperCase()}
+              Cancellation Policy: <span style={{ fontWeight: "bold"}}> {item.cancellation_policy.toUpperCase()}</span>
             </li>
             <li className="list-group-item">
               Review Scores Rating:{" "}
-              <p className="item-rating-num" 
+              <p className="item-rating-num"
                 style={{
                   color: item.review_scores_rating > 69 ? "green" : "red",
                 }}
               >
-                {item.review_scores_rating}{" "}
+                <strong>{item.review_scores_rating}</strong>
               </p>
+              
             </li>
           </ul>
+          <Button className="edit-item-button" variant="primary" onClick={handleShow}>
+                Edit Listing
+              </Button>
+
+              <UpdateForm item={item} show={show} handleClose={handleClose} handleUpdate={handleUpdate} />
         </div>
       </div>
     </div>

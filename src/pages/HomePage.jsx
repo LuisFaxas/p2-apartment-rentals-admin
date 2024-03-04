@@ -2,9 +2,12 @@
 import listings from "../data/data.json";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import NewItemForm from '../components/AddAptForm';
+import ImageComponent from "../components/ImageComponent";
 
-function HomePage() {
-  const [data, setData] = useState([]);
+function HomePage({ data, setData}) {
+
+  const [showForm, setShowForm] = useState(false)
 
   useEffect(() => {
     setData(listings.results);
@@ -14,23 +17,35 @@ function HomePage() {
     setData(data.filter((item) => item.id !== id));
   }
 
+  function handleAddItem(item) {
+    setData([...data, item]);
+  }
+
   return (
+    
     <div className="listingCards">
+
+     <button className="item-add-button" onClick={() => setShowForm(true)} style={{ position: 'absolute', left: '10px', top: '10px' }}>
+        Add New Item
+      </button>
+      <NewItemForm show={showForm} handleClose={() => setShowForm(false)} addItem={handleAddItem} />
+
       {data.map((item) => (
         <div key={item.id}>
         <Link to={`/item/${item.id}`} className="card-link">
           <div className="card" style={{ width: "18rem" }}>
-            <img
+            {/* <img
               src={`${item.picture_url.url}`}
               className="card-img-top"
               alt="..."
-            />
+            /> */}
+            <ImageComponent item={item} />
 
-            {item.picture_url.thumbnail ? (
+            {/* {item.picture_url.thumbnail ? (
               <p className="status-icon"> ✅</p>
             ) : (
               <p className="status-icon">❌</p>
-            )}
+            )} */}
 
             <div className="card-body">
               <p className="card-title"> {item.name.toUpperCase()} </p>
