@@ -9,9 +9,9 @@ function HomePage({ data, setData}) {
 
   const [showForm, setShowForm] = useState(false)
 
-  useEffect(() => {
-    setData(listings.results);
-  }, []);
+  // useEffect(() => {
+  //   setData(listings.results);
+  // }, []);
 
   function handleDelete(id) {
     setData(data.filter((item) => item.id !== id));
