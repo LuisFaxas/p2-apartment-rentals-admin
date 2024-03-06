@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NewItemForm from '../components/AddAptForm';
 import ImageComponent from "../components/ImageComponent";
+import './HomePage.css';
 
 function HomePage({ data, setData}) {
 
@@ -33,7 +34,7 @@ function HomePage({ data, setData}) {
       {data.map((item) => (
         <div key={item.id}>
         <Link to={`/item/${item.id}`} className="card-link">
-          <div className="card" style={{ width: "18rem" }}>
+          <div className="card home-card" style={{ width: "18rem" }}>
             {/* <img
               src={`${item.picture_url.url}`}
               className="card-img-top"

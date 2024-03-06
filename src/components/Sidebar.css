@@ -25,7 +25,7 @@
   transition: background-color 0.3s ease; /* Smooth color transition */
 }
 .sidebar a:hover {
-  background-color: #d0d0d0; /* Darker color on hover */
+  background-color: rgb(188, 187, 187); /* Darker color on hover */
 }
 
 .sidebar ul {
@@ -45,7 +45,10 @@
 }
 
 .sidebar-link:hover {
-  color: #007BFF;
+  color: #000000;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
 }
 
 .sidebar-icon {
@@ -62,3 +65,21 @@
   height: auto;
   padding-left: 0px;
 }
+
+
+.sidebar-link:disabled {
+  pointer-events: none;
+}
+
+
+.sidebar-link:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/* @media (max-width: 768px) {
+  .sidebar {
+
+    width: 100%;
+  }
+} */

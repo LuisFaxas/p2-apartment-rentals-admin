@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import UpdateForm from '../components/UpdateAptForm';
 import { Button } from 'react-bootstrap';
+import './ItemDetailsPage.css';
 
 function ItemDetailsPage({ data }) {
   const { id } = useParams();
@@ -26,7 +27,7 @@ function ItemDetailsPage({ data }) {
   };
 
   return (
-    <div>
+    <div className="details-container">
       <h2><strong>{item.name.toUpperCase()}</strong></h2>
       <img src={item.picture_url.url} alt="Item" />
       <div className="item-basic-info">
@@ -36,7 +37,7 @@ function ItemDetailsPage({ data }) {
         <p className="item-rooms">
           {item.bedrooms} Rooms, {item.bathrooms} Baths, {item.beds} Beds
         </p>
-        <p className="item-price"><span>${item.price} per night</span></p>
+        <p className="item-price"><span>Book now ${item.price} per night</span></p>
       </div>
 
       <hr />

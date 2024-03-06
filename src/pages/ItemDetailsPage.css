@@ -1,0 +1,80 @@
+.item-price span{
+ /*  font-weight: 400;
+  margin-right: 20px;
+  background-color: rgb(222, 245, 222);
+  padding: 5px;
+  border-radius: 5px; */
+  font-size: 20px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  background-color: rgba(5, 221, 5, 0.483); /* Button color */
+  padding: 5px 20px; /* Button padding */
+  margin-bottom: 10px; /* Space between buttons */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth color transition */
+}
+.item-price span:hover {
+  background-color: rgb(4, 144, 44);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px); /* Darker color on hover */
+}
+
+.item-midsection{
+ display: flex;
+ justify-content: space-between;
+ gap: 30px;
+
+}
+
+.item-card {  
+  max-width: fit-content !important;
+  min-width: fit-content !important;
+  height: max-content !important;
+ padding-bottom: 0px !important;
+  margin-bottom: 0px;
+}
+
+
+.item-rating-num{
+  font-size: 50px;
+  font-weight: bolder;
+  text-align: center;
+  margin: 0px;
+}
+
+.item-host-name{
+  font-weight: bolder;
+  margin-bottom: 0px;
+}
+
+.edit-item-button {
+  margin: 0px;
+}
+
+.item-location {
+  color: black;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  padding: 0px;
+}
+
+.item-rooms {
+  color: black;
+  font-size: 15px;
+  margin-left: 20px;
+  padding: 0px;
+}
+
+.item-price {
+  display: flex;
+  justify-content: center; 
+}
+
+.details-container {
+  max-width: 900px !important;
+  margin: 0 auto; 
+}

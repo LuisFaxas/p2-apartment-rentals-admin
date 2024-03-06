@@ -24,7 +24,7 @@ const ImageComponent = ({ item }) => {
 
             {valid ? 
 
-            <p className="status-icon"> ✅</p>
+            <p className="status-icon"> 🟢</p>
              : 
             <p className="status-icon">❌</p>
                      
