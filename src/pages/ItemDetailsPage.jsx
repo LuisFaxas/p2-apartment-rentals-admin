@@ -1,11 +1,11 @@
 import listings from "../data/data.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import UpdateForm from '../components/UpdateAptForm';
 import { Button } from 'react-bootstrap';
 import './ItemDetailsPage.css';
 
-function ItemDetailsPage({ data }) {
+function ItemDetailsPage({ data, setData }) {
   const { id } = useParams();
   const [item, setItem] = useState(data.find((item) => item.id == id));
   const [show, setShow] = useState(false);
@@ -14,17 +14,28 @@ function ItemDetailsPage({ data }) {
   const handleShow = () => setShow(true);
 
   const handleUpdate = (updatedItem) => {
-    // Find the index of the item in the listings.results array
-    const index = data.results.findIndex((item) => item.id === id);
-
-    // Replace the item in the listings.results array with the updated item
-    data.results[index] = updatedItem;
-
-    // Update the state with the updated item
-    setItem(updatedItem);
-
+    console.log('handleUpdate called with:', updatedItem);
+  
+      const index = data.findIndex((item) => item.id === id);
+      console.log('Item found at index:', index);
+  
+      const newData = [...data];
+      newData[index] = updatedItem;
+  
+      setData(newData);
+      console.log('Data updated to:', { ...data, results: newData });
+  
+      setItem(updatedItem);
+      console.log('Item updated to:', updatedItem);
+    
+  
     handleClose();
   };
+  
+  useEffect(() => {
+    console.log('Data updated to:', data);
+    console.log('Item updated to:', item);
+  }, [data, item]);
 
   return (
     <div className="details-container">

@@ -12,13 +12,9 @@ import Footer from './components/Footer';
 import './App.css'; 
 
 
-
 function App() {
 
   const [data, setData] = useState(listings.results);
-
-
-
 
   return (
     <div className='App'>
@@ -27,7 +23,7 @@ function App() {
       <div className="main-content"> 
       <Routes>
         <Route path="/" element={<HomePage data={data} setData={setData} />} />
-        <Route path="/item/:id" element={<ItemDetailsPage data={data} />} />
+        <Route path="/item/:id" element={<ItemDetailsPage data={data} setData={setData} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
